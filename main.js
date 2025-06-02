@@ -52,6 +52,47 @@ function calculateWakeUpTime() {
     spanElement.textContent = newTime;
 }
 
+function setAlarm() {
+    // 1. wakeUpTime에서 시와 분을 가져오기
+    const wakeUpText = document.getElementById("wakeUpTime").textContent;
+    if (!wakeUpText) {
+        alert("먼저 기상 시간을 계산해주세요.");
+        return;
+    }
+    const [hourStr, minuteStr] = wakeUpText.split(":");
+    const hours = parseInt(hourStr, 10);
+    const minutes = parseInt(minuteStr, 10);
+
+    // 2. 현재 시간과 비교하여 알람까지 남은 시간 계산
+    const now = new Date();
+    const alarmTime = new Date();
+    alarmTime.setHours(hours, minutes, 0, 0);
+
+    // 만약 알람 시간이 이미 지났으면 다음 날로 설정
+    if (alarmTime <= now) {
+        alarmTime.setDate(alarmTime.getDate() + 1);
+    }
+    const timeDiff = alarmTime - now;
+
+    // 3. 알람 설정(브라우저 알림)
+    setTimeout(() => {
+        alert(`설정한 ${hours}시 ${minutes}분에 알람입니다!`);
+    }, timeDiff);
+
+    // 4. 알람 설정 내역을 보여줄 div가 없으면 생성
+    let alarmListDiv = document.getElementById("alarmList");
+    if (!alarmListDiv) {
+        alarmListDiv = document.createElement("div");
+        alarmListDiv.id = "alarmList";
+        alarmListDiv.style.marginTop = "10px";
+        document.getElementById("sleepTimeContainer").appendChild(alarmListDiv);
+    }
+
+    // 5. 알람 내역 추가
+    const alarmInfo = document.createElement("p");
+    alarmInfo.textContent = `설정된 알람: ${hours}시 ${minutes}분`;
+    alarmListDiv.appendChild(alarmInfo);
+}
 
 
 
