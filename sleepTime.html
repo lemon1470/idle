@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>sleepkeeper</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <div class="cell">
+                <div class="headline" style="width: 32%;"></div>
+                <h1 style="display: inline-block; "class="headline">SLEEPKEEPER</h1>
+                <div style="text-align: right;"class="headline"><p id="mode" onclick="modeChange()">Dark</p></div> <!--모드 변경-->
+            </div>
+            <hr>
+            <nav>
+                <ul>   
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="index.html">schedule</a></li>
+                    <li><a href="#information">수면정보</a></li>
+                    <li><a href="#footer">제작자</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="home"><!--페이지 소개--> 
+                <h2>SLEEPKEEPER에 오신 것을 환영합니다!</h2>
+                <p>SLEEPKEEPER은 당신의 수면 시간을 관리하고, 수면 정보를 쉽게 확인할 수 있는 웹 애플리케이션입니다.</p>
+                <p>최적의 기상 시간을 알려주고 알람을 설정할 수 있습니다.</p>
+            </section>
+            <hr>
+
+            <section id="about"><!--수면 시간 페이지-->
+                <h2>수면 시간</h2>
+                <p>여기에서 당신의 수면 시간을 확인하고 관리할 수 있습니다.</p>
+                <div id="sleepTimeContainer">
+                    <!--수면 시간 목록이 여기에 표시됩니다-->
+                    <div id="sleepTime" class="sleepTime">
+                        <h4 style="margin-top: 3%;">수면 시간</h4>
+        
+                        <p>당신의 취침 시각을 입력해주세요.</p>
+                        <input type="time" id="bedtime" name="bedtime" required>
+                        <button id="calculateButton" onclick="calculateWakeUpTime()">기상 시간 계산</button>
+
+
+                        <div id="result" style="display: none;">
+                            <p>당신의 최적 기상 시간은 <span id="wakeUpTime"></span>입니다.</p>
+                            <p>알람을 설정하시겠습니까?</p>
+                            <button id="setAlarmButton" onclick="setAlarm()">알람 설정</button>
+                            <button id="cancelAlarmButton" onclick="cancelAlarm()">알람 취소</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <section id="information">
+                <h2>사람들의 평균 취침 시간</h2>
+                <p>사람들의 평균 취침 시간은 11시 30분입니다.</p>
+                <p>이 시간에 취침하는 것이 건강에 좋습니다.</p>
+                <p>수면 시간은 개인의 생활 패턴에 따라 다를 수 있지만, 18세~64세의 사람들은 7-9시간의 수면이 권장됩니다.</p>
+                <p>수면 시간은 개인의 건강과 웰빙에 중요한 영향을 미칩니다.</p>
+                <p>수면 부족은 집중력 저하, 면역력 감소, 우울증 등의 문제를 일으킬 수 있습니다.</p>
+                <p>따라서, 충분한 수면 시간을 확보하는 것이 중요합니다.</p>
+            </section>
+
+            <hr>
+
+            <footer id="footer">
+                <p>제작자: 윤태영</p>
+            </footer>
+
+
+        </main>
+
+    </body>
+</html>
